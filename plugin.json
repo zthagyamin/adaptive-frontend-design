@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "adaptive-frontend-design",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Content-led frontend design, motion, and interactive 3D guidance",
   "author": { "name": "zthagyamin", "url": "https://github.com/zthagyamin" },
   "repository": "https://github.com/zthagyamin/adaptive-frontend-design",

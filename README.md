@@ -99,9 +99,9 @@ Open the address printed by the server. Node.js 20+ is sufficient for this local
 
 These are real screenshots of the included project, not a promise that a skill call produces the same design. Its images are generated concepts and its records are fictional. The public edition preserves the working methods while removing private research and task history. [Validation scope](docs/VALIDATION.md).
 
-## Upgrade candidate: contrasting examples and motion studies
+## Contrasting examples and motion studies
 
-The `upgrade/v0.2.0` work adds three separate runnable references. They are candidate demonstrations until the human visual/feel gate and final checks are complete; package metadata remains at 0.1.0 during that review.
+Version 0.2.0 adds three separate runnable references for comparison, reading and direct motion. Their layout, control shapes and parameters belong to each example; they are not a default template for Skill users. Release checks and the exact human-feedback scope are recorded in [validation](docs/VALIDATION.md).
 
 | Example | Run from the repository root | Main path |
 | --- | --- | --- |
@@ -134,8 +134,7 @@ It keeps **implementation checks**, **visual assessment**, and **human acceptanc
 Useful contributions include reproducible interaction bugs, better task-specific references, faithful translations, and complete examples with clear asset rights. Run:
 
 ```sh
-node scripts/validate.mjs
-node --test tests/*.test.mjs
+npm run check
 ```
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md). If the workflow helps, a star makes the project easier to find; a concrete example or issue helps improve it.

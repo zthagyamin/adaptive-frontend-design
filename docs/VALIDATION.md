@@ -22,9 +22,9 @@ On 2026-10-26, one fresh agent received the updated Skill and the eight request/
 
 The example history correction was also exercised in a browser using direct-detail → related-content → close, in-site map entry → multiple related items → Escape, and refresh → close. The examined paths returned to a stable manual section or the actual map source with a visible focus target. This targeted check does not repeat the example's entire visual or device acceptance.
 
-## v0.2.0 candidate evidence
+## v0.2.0 implementation and release evidence
 
-This is a candidate, not a released or human-accepted 0.2.0. Installed/private editions are unchanged. The two complete pages and motion studies still require the agreed visual/feel feedback and final publication gates.
+Version 0.2.0 is prepared for release; it has not yet been merged or published. On 2026-10-27 (Asia/Taipei), the maintainer accepted the overall direction of the two complete pages, their control expressions and the motion studies' interaction feel after being given the live pages. That feedback is distinct from technical checks and does not establish universal quality. True 200% browser zoom is awaiting the maintainer's separate check; it was not waived. Installed/private editions are unchanged.
 
 At public commit `c3383e2cc696cdc086e03b84deccaba737436464`, [CI run 40387533545](https://github.com/zthagyamin/adaptive-frontend-design/actions/runs/40387533545) passed the Node 20/22 checks and 55 Chromium desktop/narrow tests. One redundant narrow video recording was deliberately skipped; narrow functional paths were run. WebKit was skipped for the draft PR and remains a final gate. The uploaded report/video was downloaded and its archive digest checked.
 
@@ -44,7 +44,7 @@ Native pointer/keyboard inspection separately exercised scheduler success, delay
 
 The frozen candidate also received one eight-scenario planning run and two independent runnable transfer tasks. The operations slice needed a coordinator repair after a late save redrew the focused resume control; its first failure, original source snapshot and repaired browser path were kept. The editorial slice's examined image/related return paths worked without a coordinator code repair. These are bounded, revised transfer results, not controlled evidence of Skill effectiveness. The planning-only editorial response also proposed extra author/topic pages: those should stay conditional on scope rather than become automatic requirements.
 
-The later additions about startup space and resolved glyph fonts are implementation-derived guidance beyond that frozen transfer run. They have not received a second independent production evaluation. Automated scans and the native paths above do not constitute complete accessibility certification. True 200% browser zoom remains unverified in the available native browser surface; viewport resizing is not counted as zoom. Physical touch, complete screenreader use, continuous native motion observation, final human effect feedback and final WebKit/main checks remain explicit gaps.
+The later additions about startup space and resolved glyph fonts are implementation-derived guidance beyond that frozen transfer run. They have not received a second independent production evaluation. Automated scans and the native paths above do not constitute complete accessibility certification. True 200% browser zoom remains unverified in the available native browser surface; viewport resizing is not counted as zoom. Physical touch, complete screenreader use, continuous native motion observation and final WebKit/main checks remain explicit gaps. The maintainer's accepted effect feedback is recorded above and does not fill those technical gaps.
 
 ## Limits
 

@@ -83,9 +83,9 @@ node examples/migration-field-guide/serve.mjs
 
 截图来自仓库内的真实示例。影像为生成概念图，数据为虚构；它们不代表实地监测，也不保证每次调用得到同样设计。公开版保留工作方法，去除了私人研究库、任务流水和机器依赖。[验证范围](docs/VALIDATION.md)。
 
-## 升级候选：两种差异作品与动态参考
+## 两种差异作品与动态参考
 
-`upgrade/v0.2.0` 增加三项独立可运行参考。当前仍需最终效果反馈与发布检查；候选审查期间，包和插件元数据保留 0.1.0。
+0.2.0 增加三项独立可运行参考，分别服务于比较操作、连续阅读与直接动态响应。布局、控件外形和参数属于各自示例，不成为 Skill 用户的默认模板。发布检查与本人效果反馈的实际范围见[验证记录](docs/VALIDATION.md)。
 
 | 示例 | 在仓库根目录启动 | 主要路径 |
 |---|---|---|
@@ -102,8 +102,7 @@ node examples/migration-field-guide/serve.mjs
 欢迎可复现的交互问题、符合当前任务的参考、忠实翻译和来源清楚的完整示例。检查命令：
 
 ```sh
-node scripts/validate.mjs
-node --test tests/*.test.mjs
+npm run check
 ```
 
 贡献前看 [CONTRIBUTING.md](CONTRIBUTING.md)。如果有帮助，可以点一个Star；带具体材料的使用反馈更有助于改进。

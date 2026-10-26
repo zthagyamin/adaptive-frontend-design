@@ -31,7 +31,7 @@ The repository's migration field guide is distributed separately from the instal
 
 The repository-level example link is informational. Installation copies only this skill directory; using the skill does not require the example or any private evidence archive.
 
-## Original implementation-derived synthesis in the upgrade candidate
+## Original implementation-derived synthesis in v0.2.0
 
 The workshop scheduler, nature journal and motion lab contribute conditional guidance on asynchronous truth, visible focus after native-dialog closure or redraw, input cancellation ownership, accessible visible names, source/display/near-view assets, module execution and browser evidence. These additions were derived from task-authored implementations and observed corrections; they are not claims about the private code of studied commercial websites.
 
