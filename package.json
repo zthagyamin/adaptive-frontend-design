@@ -5,9 +5,19 @@
   "type": "module",
   "description": "Content-led frontend design guidance for coding agents",
   "license": "Apache-2.0",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "check": "node scripts/validate.mjs && node --test tests/*.test.mjs",
-    "demo": "node examples/migration-field-guide/serve.mjs"
+    "check": "node scripts/validate.mjs && node scripts/unit-tests.mjs",
+    "test:unit": "node scripts/unit-tests.mjs",
+    "test:e2e": "playwright test",
+    "demo": "node examples/migration-field-guide/serve.mjs",
+    "demo:scheduler": "node examples/workshop-scheduler/serve.mjs",
+    "demo:journal": "node examples/nature-journal/serve.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.64.1"
   }
 }

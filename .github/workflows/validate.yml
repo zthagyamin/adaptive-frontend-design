@@ -2,6 +2,7 @@ name: Validate
 on:
   push:
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -15,4 +16,45 @@ jobs:
       - name: Validate package and links
         run: node scripts/validate.mjs
       - name: Check helpers, example paths, data and package fixtures
-        run: node --test tests/*.test.mjs
+        run: node scripts/unit-tests.mjs
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e -- --project=chromium-desktop --project=chromium-narrow
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: chromium-failure-evidence
+          path: .test-artifacts/
+          retention-days: 7
+  webkit:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps webkit
+      - run: npm run test:e2e -- --project=webkit-smoke
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: webkit-failure-evidence
+          path: .test-artifacts/
+          retention-days: 7

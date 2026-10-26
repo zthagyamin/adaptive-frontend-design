@@ -1,7 +1,6 @@
 node_modules/
-.DS_Store
-.env
-.env.*
-*.log
-dist/
+.test-artifacts/
+playwright-report/
+test-results/
 coverage/
+.DS_Store
