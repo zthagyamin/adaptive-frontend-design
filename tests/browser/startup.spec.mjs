@@ -13,7 +13,7 @@ async function observe(browser,viewport,{url,ready,eager=false}){
     await page.addInitScript(()=>{
       window.__startupProbe={cls:0,shifts:[]};
       if(PerformanceObserver.supportedEntryTypes.includes('layout-shift'))new PerformanceObserver(list=>{
-        for(const entry of list.getEntries())if(!entry.hadRecentInput){window.__startupProbe.cls+=entry.value;window.__startupProbe.shifts.push({time:entry.startTime,value:entry.value});}
+        for(const entry of list.getEntries())if(!entry.hadRecentInput){window.__startupProbe.cls+=entry.value;window.__startupProbe.shifts.push({time:entry.startTime,value:entry.value,sources:entry.sources.map(source=>({target:source.node?`${source.node.nodeName}${source.node.id?'#'+source.node.id:''}${source.node.className&&typeof source.node.className==='string'?'.'+source.node.className.trim().replaceAll(' ','.'):''}`:'unavailable',previous:source.previousRect.toJSON(),current:source.currentRect.toJSON()}))});}
       }).observe({type:'layout-shift',buffered:true});
     });
     if(eager)await page.route('**/app.mjs',route=>route.fulfill({status:200,contentType:'text/javascript',body:eagerApp}));
@@ -41,6 +41,7 @@ test('three matched startup samples per example and eager/lazy motion comparison
     for(let i=0;i<3;i++){
       const sample=await observe(browser,viewport,item);samples.push(sample);
       expect(sample.initialBytes).toBeGreaterThan(0);expect(sample.initialBytes).toBeLessThanOrEqual(item.budget);
+      expect.soft(sample.layoutShift.cls,`${item.name}: startup shift sum over this bounded observation`).toBeLessThanOrEqual(0.1);
       if(item.name==='motion')expect(sample.assets.some(r=>r.path==='/vendor/three.module.js')).toBe(false);
     }
     report.examples[item.name]=samples;
