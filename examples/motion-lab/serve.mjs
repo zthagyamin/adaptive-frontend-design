@@ -19,7 +19,7 @@ export function createServer() {
     catch { res.writeHead(400); res.end('Bad request'); return; }
     const candidate = path.resolve(root, '.' + (name === '/' ? '/index.html' : name));
     const file = sharedFiles.get(name) || candidate;
-    if (!sharedFiles.has(name) && (!candidate.startsWith(root + path.sep) || name.includes('\0'))) { res.writeHead(403); res.end('Forbidden'); return; }
+    if (!sharedFiles.has(name) && (!candidate.startsWith(root + path.sep) || name.includes('\0') || name.includes('\\'))) { res.writeHead(403); res.end('Forbidden'); return; }
     try {
       const real = await fs.realpath(file);
       if (!sharedFiles.has(name) && !real.startsWith(root + path.sep)) { res.writeHead(403); res.end('Forbidden'); return; }

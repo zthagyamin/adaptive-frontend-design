@@ -3,7 +3,7 @@ import {expectNoPageOverflow} from './helpers.mjs';
 const root='http://127.0.0.1:3002';
 test('journal image close preserves the article and visible source',async({page})=>{
   await page.goto(root+'/#/article/tide');await page.reload();await expect(page.locator('#article-title')).toHaveText('等潮水把岸还回来');
-  await page.getByRole('button',{name:'近看：等潮水把岸还回来的概念影像',exact:true}).click();
+  await page.locator('#image-tide').click();
   await expect(page.locator('#image-viewer')).toBeVisible();await page.keyboard.press('Escape');
   await expect(page).toHaveURL(/#\/article\/tide$/);await expect(page.locator('#image-tide')).toBeFocused();await expect(page.locator('#image-tide')).toBeInViewport();
   await expectNoPageOverflow(page);
