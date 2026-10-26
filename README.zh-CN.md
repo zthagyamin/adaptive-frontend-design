@@ -1,8 +1,14 @@
 # Adaptive Frontend Design · 自适应前端设计
 
-**让内容决定网页表达，把版式、动效、3D 和真实使用路径接起来。**
+**面向编码智能体的设计 Skill：让内容决定表达，把版式、动效、3D 与真实使用路径接起来。**
 
 [English](README.md) · [安装](#安装) · [完整示例](#完整示例) · [参与改进](CONTRIBUTING.md)
+
+```sh
+npx skills add zthagyamin/adaptive-frontend-design --skill adaptive-frontend-design
+```
+
+此社区安装器需要 Node.js 22.20+；[其他安装方式](#安装)。
 
 ![季节路线与实时3D地图](docs/assets/field-guide-routes.jpg)
 

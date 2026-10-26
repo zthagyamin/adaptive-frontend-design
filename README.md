@@ -1,6 +1,6 @@
 # Adaptive Frontend Design
 
-**Content-led frontend design for coding agents — from readable interfaces to motion and interactive 3D.**
+**An agent skill for content-led websites, global motion, and interactive 3D.**
 
 [中文](README.zh-CN.md) · [Install](#install) · [Try a prompt](#try-a-prompt) · [Example](#a-complete-example) · [Contribute](CONTRIBUTING.md)
 
@@ -8,6 +8,12 @@
 [![Validate](https://github.com/zthagyamin/adaptive-frontend-design/actions/workflows/validate.yml/badge.svg)](https://github.com/zthagyamin/adaptive-frontend-design/actions/workflows/validate.yml)
 
 Give your agent a design process that starts with **who will use the site, what they need, and how the content works**. Then build the complete path: browse, choose, inspect, read, and return.
+
+```sh
+npx skills add zthagyamin/adaptive-frontend-design --skill adaptive-frontend-design
+```
+
+Node.js 22.20+ for this community installer. [Other installation options](#install).
 
 ![Migration field guide: content, routes, and a realtime map](docs/assets/field-guide-routes.jpg)
 
