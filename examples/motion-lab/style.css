@@ -3,3 +3,6 @@
 /* Reserve the first study before the module executes. Completed studies own
    their real content height; this is not a permanent spacer. */
 #effect-host:not([data-state]){min-block-size:100svh}
+/* On the narrow two-column control grid, keep the explanation together above
+   the sliders instead of treating it as another half-width input. */
+@media(max-width:650px){.controls>div:first-child{grid-column:1/-1}}

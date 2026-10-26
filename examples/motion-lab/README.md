@@ -42,7 +42,7 @@ During a 3D import, the host exposes `data-state="loading"` and `aria-busy="true
 
 ## Cost and scope
 
-The reused Three.js **r160** module is 1,326,016 uncompressed bytes. It is requested when a 3D study is selected; the initial scroll study does not import it. Surface and particles share the same unchanged engine module. Three.js uses its built-in material color pipeline; no custom display shader, HDR, texture, model download, shadow map, bloom, post-processing or GPU compute pass is involved.
+The reused Three.js **r160** module has 1,272,972 bytes in the committed LF blob; a Windows CRLF checkout in the examined local environment has 1,326,016 bytes. Actual response bytes depend on the served checkout and encoding, and are recorded separately in the browser measurements. It is requested when a 3D study is selected; the initial scroll study does not import it. Surface and particles share the same unchanged engine module. Three.js uses its built-in material color pipeline; no custom display shader, HDR, texture, model download, shadow map, bloom, post-processing or GPU compute pass is involved.
 
 The surface has 2,665 vertices, 5,120 triangles and two mesh draw calls. Positions and normals update on the CPU while the spring is active. The particle field uses one points draw call plus one small selection ring, with CPU integration. These counts describe implementation cost, not measured performance. The point cloud is a local artistic response, not a fluid solver; the surface is a visual spring model, not cloth physics or a material simulation. Geometry is original and intentionally abstract.
 

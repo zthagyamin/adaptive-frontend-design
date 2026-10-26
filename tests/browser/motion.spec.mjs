@@ -18,6 +18,11 @@ test('particle strength and low quality change the actual controls and drawn fie
   await page.getByRole('combobox',{name:'Particle quality',exact:true}).selectOption('low');await expect(page.locator('[data-count]')).toHaveText('1,200 POINTS');
   await page.getByRole('button',{name:'Stir left ↶',exact:true}).click();await layoutFrames(page);
   await expect(page.locator('.failure')).toHaveCount(0);await expectNoPageOverflow(page);
+  if(page.viewportSize().width<=650){
+    const explanation=await page.locator('.controls>div').first().boundingBox();
+    const firstInput=await page.locator('.controls>label').first().boundingBox();
+    expect(firstInput.y).toBeGreaterThanOrEqual(explanation.y+explanation.height-.5);
+  }
 });
 test('ten renderer replacements return disposed resources to zero',async({page},testInfo)=>{
   await page.goto(root);
