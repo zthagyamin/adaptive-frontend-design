@@ -1,0 +1,8 @@
+interface:
+  display_name: Adaptive Frontend Design
+  short_description: Content-led layout, motion, 3D, and usable complete websites
+  default_prompt: Use $adaptive-frontend-design to design and implement a website around its audience, content, brand, and real interactions.
+  icon_small: ./assets/icon.svg
+  icon_large: ./assets/icon.svg
+policy:
+  allow_implicit_invocation: true

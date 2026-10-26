@@ -1,0 +1,22 @@
+name: Reproducible problem
+description: Report a concrete failure in the guidance, package, or example.
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: Request and environment
+      description: Agent/host, version if known, and a minimal non-private request.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and observed result
+      description: Include the input sequence, expected result, and actual result. Remove private data.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Relevant evidence
+      description: Optional sanitized screenshot, source excerpt, or a small reproducible example. State what was actually checked.

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#234638">
+  <meta name="description" content="逐候，一本关于迁徙与停留的虚构野外观测手册。沿季节路线阅读湿地、鸟群与观测手记。">
+  <title>逐候 · 迁徙与停留的野外手册</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body id="top">
+<a class="skip" href="#routes">跳到季节路线</a>
+<header class="masthead">
+  <a class="wordmark" href="#top" aria-label="逐候首页"><svg viewBox="0 0 48 40" aria-hidden="true"><path d="M3 27q11-20 21-1Q36 8 45 13M9 9q7 0 10 7 5-8 12-8"/></svg><span>逐候<small>迁徙与停留的野外手册</small></span></a>
+  <nav aria-label="主导航"><a href="#routes">季节路线</a><a href="#notes">观测手记</a><a href="#species">物种档案</a><a href="#about">关于逐候</a></nav>
+  <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◌</span> 减少动态</button>
+</header>
+<main>
+  <section class="cover wrap" aria-labelledby="cover-title">
+    <div class="cover-intro"><div><p class="eyebrow"><span class="season-stamp">秋</span> 九月至十一月 · 南行的季节</p><h1 id="cover-title">迁徙是一条路，<br>也是许多次停留。</h1></div><div class="cover-deck"><p>沿着水岸，把远方的路线<br>读成眼前的一片湿地。</p><a class="text-link" href="#routes">打开这一季的地图 <span aria-hidden="true">↘</span></a></div></div>
+    <figure class="cover-photo"><img src="/assets/wetland.png" alt="概念图：明亮天空下，鸟群飞过水道与芦苇相间的开阔湿地" width="1672" height="941" fetchpriority="high"><figcaption><span>在一片湿地，看见旅途的中间。</span><span>AI 生成概念图 · 非实地影像</span></figcaption><div class="photo-index" aria-hidden="true">秋<br><span>的<br>来<br>信</span></div></figure>
+    <div class="disclosure"><span class="disclosure-mark" aria-hidden="true">i</span><p>这是一个虚构的观测站。地点、路线、日期与数量均为示意；影像为 AI 生成，不作为物种鉴定或科学证据。</p></div>
+  </section>
+  <section id="routes" class="routes-section" aria-labelledby="routes-title">
+    <div class="wrap"><div class="section-heading"><div><p class="eyebrow">从季节进入</p><h2 id="routes-title">水岸之间，三处停留。</h2></div><p>换一个季节，看路线如何改变。<br>点选地点，读一页当地的观测手记。</p></div>
+      <div class="season-tabs" aria-label="选择季节"><button type="button" data-season="spring" aria-pressed="false"><span>春</span>北归 · 3—5月</button><button type="button" data-season="autumn" aria-pressed="true"><span>秋</span>南行 · 9—11月</button><button type="button" data-season="winter" aria-pressed="false"><span>冬</span>越冬 · 12—2月</button></div>
+      <div class="route-layout"><div class="map-column"><div id="map-stage" class="map-stage"><div class="map-title"><span>栖湾水岸</span><small>虚构地形 · 路线示意，不按比例</small></div><canvas id="terrain" tabindex="0" aria-label="可旋转的立体水岸地图。拖动改变视角；聚焦后使用方向键旋转。地点也可通过下方列表选择。"></canvas><div id="map-labels" class="map-labels"></div><p id="map-fallback" class="map-fallback" hidden>立体地图暂不可用。你仍可从右侧地点列表阅读全部路线与手记。<button type="button" id="retry-map">重试地图</button></p><div class="map-compass" aria-hidden="true">N<span>↑</span></div><div class="map-tools"><p>拖动地图转向 <span>·</span> 点选地点</p><div><button id="zoom-in" type="button" aria-label="放大地图">＋</button><button id="zoom-out" type="button" aria-label="缩小地图">−</button><button id="reset-map" type="button">回到全貌</button></div></div><div class="map-key"><i></i><span id="map-route-key">秋季南行路线</span><span>编号对应地点列表</span></div></div><p class="map-caption">立体地形帮助理解水岸与停歇点的位置关系；飞行轨迹是演示，不代表实际个体追踪。</p></div>
+        <div class="route-copy"><p class="route-count" id="route-count">秋季 · 03 个停歇点</p><h3 id="route-name">顺着水岸，向南。</h3><p id="route-description">芦苇荡、浅滩与开阔河口，串起一段虚构的南行旅程。留意不同水边，鸟群怎样停留。</p><ol id="station-list" class="station-list"></ol><a id="route-read" class="solid-link" href="#/note/reed-1018">读芦汀浅湾的手记 <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </div>
+  </section>
+  <section id="notes" class="wrap notes-section" aria-labelledby="notes-title"><div class="section-heading"><div><p class="eyebrow">现场的细节</p><h2 id="notes-title">观测手记</h2></div><p>先记下看见的，再想它意味着什么。<br>以下内容均为虚构示例。</p></div><div id="notes-preview"></div></section>
+  <section id="species" class="wrap species-section" aria-labelledby="species-title"><div class="section-heading"><div><p class="eyebrow">从一只鸟开始</p><h2 id="species-title">物种档案</h2></div><p>示意类群，帮助阅读手记。<br>不提供真实物种鉴定。</p></div><div id="species-preview"></div></section>
+  <section id="about" class="about-section"><div class="wrap"><p class="eyebrow">关于这本手册</p><h2>把「看见」和「判断」分开。</h2><p>逐候用一片虚构的湿地，练习留意迁徙中的停留。它不是实时监测平台，也不发布任何科学或保护结论。</p><a class="text-link" href="#/about">阅读内容与素材说明 <span aria-hidden="true">↗</span></a></div></section>
+</main>
+<footer class="footer wrap"><a class="footer-brand" href="#top">逐候</a><p>迁徙与停留的野外手册<br>虚构观测 · 原创示意地形 · AI 概念影像</p><a href="#top">回到页首 ↑</a></footer>
+<dialog id="reader" aria-labelledby="reader-title"><div class="reader-top"><span id="reader-kind">观测手记</span><button id="reader-close" type="button">返回手册 <span aria-hidden="true">✕</span></button></div><div id="reader-content"></div></dialog>
+<p class="sr-only" id="announcer" role="status" aria-live="polite"></p>
+</body></html>

@@ -1,0 +1,13 @@
+{
+  "name": "adaptive-frontend-design",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Content-led frontend design guidance for coding agents",
+  "license": "Apache-2.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "check": "node scripts/validate.mjs && node --test tests/*.test.mjs",
+    "demo": "node examples/migration-field-guide/serve.mjs"
+  }
+}
