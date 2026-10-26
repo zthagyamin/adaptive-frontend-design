@@ -40,9 +40,9 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e -- --project=chromium-desktop --project=chromium-narrow
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: always()
         with:
-          name: chromium-failure-evidence
+          name: chromium-browser-evidence
           path: .test-artifacts/
           retention-days: 7
   webkit:
@@ -61,8 +61,8 @@ jobs:
       - run: npx playwright install --with-deps webkit
       - run: npm run test:e2e -- --project=webkit-smoke
       - uses: actions/upload-artifact@v4
-        if: failure()
+        if: always()
         with:
-          name: webkit-failure-evidence
+          name: webkit-browser-evidence
           path: .test-artifacts/
           retention-days: 7

@@ -22,6 +22,14 @@ Open **http://127.0.0.1:4303**. `AFD_DEMO_PORT` overrides the port. The service 
 
 Each effect exports `createEffect({ host, reducedMotion })` and returns `reset()`, `setReducedMotion(boolean)`, and `destroy()`. The shell destroys the current instance before mounting a new study. Shared engine module bytes are browser-cached; renderer, geometry, material, observer, listener and animation-loop ownership belongs to each mounted instance. Destroy is idempotent. The surface shares one geometry between its solid and wire layers; disposal deduplicates shared resources.
 
+## Loading and failure boundaries
+
+The scroll study initializes immediately through a DOM-only import graph. Surface and particles use dynamic imports only when selected; their complete Three.js capabilities remain unchanged. A request generation belongs to each selection. A late import success or failure cannot construct a renderer or overwrite a newer choice. The browser may finish an obsolete download, but the shell does not mount it. A pending study reads the latest Reduce motion value immediately before construction.
+
+During a 3D import, the host exposes `data-state="loading"` and `aria-busy="true"`, shows the selected mechanism's explanation and an honest loading message, and keeps tabs and Reduce motion usable. Import failure exposes `data-state="error"`, keeps that explanation and the other study paths, and offers **Reload this page** with expandable error details. Reload starts with the independent scroll study; select the 3D study again to retry. No byte percentage is invented. WebGL failure after module loading still follows the effect's existing unavailable state and disables only its dependent controls.
+
+`pagehide` invalidates pending imports and destroys the active effect. Only a `pageshow` event with `persisted === true` rebuilds the selected study after a BFCache return; ordinary initial `pageshow` does not create a second instance. Node tests verify intent and lifecycle ordering, not a browser's actual BFCache eligibility or GPU behavior.
+
 ## Input and accessibility
 
 - Tabs support Left/Right, Home and End. Controls have stable names and visible keyboard focus.
@@ -34,7 +42,7 @@ Each effect exports `createEffect({ host, reducedMotion })` and returns `reset()
 
 ## Cost and scope
 
-The reused Three.js **r160** module is 1,326,016 uncompressed bytes. It is imported by the module graph on first entry, including the scroll study. Three.js uses its built-in material color pipeline; no custom display shader, HDR, texture, model download, shadow map, bloom, post-processing or GPU compute pass is involved.
+The reused Three.js **r160** module is 1,326,016 uncompressed bytes. It is requested when a 3D study is selected; the initial scroll study does not import it. Surface and particles share the same unchanged engine module. Three.js uses its built-in material color pipeline; no custom display shader, HDR, texture, model download, shadow map, bloom, post-processing or GPU compute pass is involved.
 
 The surface has 2,665 vertices, 5,120 triangles and two mesh draw calls. Positions and normals update on the CPU while the spring is active. The particle field uses one points draw call plus one small selection ring, with CPU integration. These counts describe implementation cost, not measured performance. The point cloud is a local artistic response, not a fluid solver; the surface is a visual spring model, not cloth physics or a material simulation. Geometry is original and intentionally abstract.
 
@@ -46,7 +54,7 @@ One animation owner per WebGL study schedules work only while needed. Hiding or 
 node --test test/*.test.mjs
 ```
 
-Node tests cover reversible chapter identity, spring release and convergence, local particle response and decay, reduced-motion state, loop deduplication, suspension/re-entry time, listener cleanup and remount, HTTP resources, engine byte identity, method handling and traversal rejection. Use `node --check` for module syntax. Test files are development checks, not runtime dependencies.
+Node tests cover reversible chapter identity, spring release and convergence, local particle response and decay, reduced-motion state, loop deduplication, suspension/re-entry time, listener cleanup and remount, HTTP resources, engine byte identity, method handling and traversal rejection. Loading tests also check the initial static import graph, immediate scroll initialization, out-of-order import resolution, obsolete failures, preference changes while loading, current import errors and pagehide/persisted-pageshow ordering. Use `node --check` for module syntax. Test files are development checks, not runtime dependencies.
 
 The automated checks do **not** establish visual quality, smoothness, hit accuracy with real pointer input, touch behavior, WebGL rendering, actual GPU cleanup, or accessibility conformance. Inspect the running full interface at wide and narrow viewports; walk mid-scroll stops/reversal, strong drag/release, rapid re-entry, blur/cancel, keyboard equivalents, quality changes, and reduced motion at normal speed. A status label, screenshot, computed position or passing Node test is not evidence of continuous motion feel.
 

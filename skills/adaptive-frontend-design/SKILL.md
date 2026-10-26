@@ -55,6 +55,8 @@ For promised motion, actually inspect the relevant sequence at normal speed, inc
 
 Use real pointer paths where pointer behavior matters; keyboard, synthetic events, and touch are different paths. Reduced motion must preserve the same core content and outcomes across CSS, JS, 3D, and media. Report device, sound, performance, and accessibility only within what was actually checked.
 
+For stateful navigation, asynchronous forms, replaced controls, or persistent motion, use [browser verification](references/browser-verification.md) to connect actual page behavior, failure recovery, visible focus and measured resources. Local copy edits reuse unaffected evidence.
+
 Fix concrete blockers before asking for effect feedback. Reuse unchanged evidence; expand checking for a new change, failure, or specific risk. Deliver the running entry, exact version, concise changes, representative views, asset attribution, and untested areas. Separate technical verification, the agent's visual assessment, and the user's acceptance. One accepted example is not a universal quality claim.
 
 For a real research gap, use [bounded source study](references/source-study.md). For implementation terminology, use [concept selection](references/design-terminology.md). Do not load the whole reference library by default.

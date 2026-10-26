@@ -1,15 +1,54 @@
 import { createEffect as scroll } from './effects/scroll.mjs';
-import { createEffect as surface } from './effects/surface.mjs';
-import { createEffect as particles } from './effects/particles.mjs';
 
-const factories = { scroll, surface, particles };
+const loaders = {
+  surface: () => import('./effects/surface.mjs'),
+  particles: () => import('./effects/particles.mjs'),
+};
+
+// Imports may finish after a new choice or pagehide. Only a current intent can
+// call a factory; importing a module alone never creates one of our renderers.
+export function createStudyController({ host, getReducedMotion, onSelection, onState, onAudit, scrollFactory = scroll, loadStudy = name => loaders[name]() }) {
+  let effect = null, selected = 'scroll', generation = 0, pageActive = true;
+  function disposeActive() { const previous = effect; effect = null; previous?.destroy(); }
+  return {
+    async select(name, { focus = false } = {}) {
+      if (name !== 'scroll' && !Object.hasOwn(loaders, name)) throw new Error('Unknown study');
+      if (!pageActive) return;
+      const intent = ++generation;
+      selected = name;
+      disposeActive();
+      const owner = { id: intent, name };
+      onSelection?.({ ...owner, focus });
+      onState?.({ ...owner, phase: name === 'scroll' ? 'initializing' : 'loading' });
+      try {
+        let factory = scrollFactory;
+        if (name !== 'scroll') {
+          const module = await loadStudy(name);
+          if (intent !== generation || !pageActive) return;
+          factory = module.createEffect;
+        }
+        if (intent !== generation || !pageActive) return;
+        effect = factory({ host, reducedMotion: getReducedMotion(), onAudit: event => onAudit?.(owner, event) });
+        onState?.({ ...owner, phase: 'ready' });
+        return effect;
+      } catch (error) {
+        if (intent !== generation || !pageActive) return;
+        onState?.({ ...owner, phase: 'error', error });
+      }
+    },
+    setReducedMotion(value) { effect?.setReducedMotion(value); },
+    suspend() { if (!pageActive) return; pageActive = false; generation++; disposeActive(); onState?.({ name: selected, phase: 'suspended' }); },
+    resume(event) { if (event.persisted !== true || pageActive) return; pageActive = true; return this.select(selected); },
+  };
+}
+
+function startApp() {
 const host = document.querySelector('#effect-host');
 const tabs = [...document.querySelectorAll('[data-effect]')];
 const preference = document.querySelector('#reduce-motion');
 const media = matchMedia('(prefers-reduced-motion: reduce)');
 preference.checked = media.matches;
-let effect, selected = 'scroll';
-let instance = 0, currentAudit = null;
+let selected = 'scroll', currentAudit = null;
 const disposedAudits = [];
 const measurements = document.createElement('details');
 measurements.id = 'developer-measurements';
@@ -46,32 +85,55 @@ measurements.querySelector('#snapshot-measurements').addEventListener('click', (
   }
   statusOutput.textContent = `Snapshot captured. ${disposedAudits.length} disposed renderer record${disposedAudits.length === 1 ? '' : 's'} retained. Values update only when this button is pressed.`;
 });
-function mount(name, { focus = false } = {}) {
-  effect?.destroy();
-  currentAudit = null;
-  const owner = { id: ++instance, name };
-  selected = name;
-  for (const tab of tabs) { const active = tab.dataset.effect === name; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; }
-  host.setAttribute('aria-labelledby', `tab-${name}`);
-  effect = factories[name]({ host, reducedMotion: preference.checked, onAudit(event) {
+const descriptions = {
+  surface: { title: '02 / A surface remembers your hand', mechanism: 'A subdivided mesh receives a local, distance-weighted displacement. Dragging holds the same patch; releasing removes force while its spring returns the shape to rest.' },
+  particles: { title: '03 / A little momentum goes a long way', mechanism: 'Individual particles carry positions and velocities. A local gesture transfers a signed push and curl; damping removes momentum after release.' },
+};
+function presentState(state) {
+  host.dataset.study = state.name;
+  host.dataset.state = state.phase;
+  host.setAttribute('aria-busy', String(state.phase === 'loading'));
+  if (state.phase !== 'loading' && state.phase !== 'error') return;
+  const description = descriptions[state.name];
+  host.innerHTML = `<div class="effect-heading"><div><h2>${description.title}</h2><p>${description.mechanism}</p></div></div><div class="failure" id="study-load-state"><h3>${state.phase === 'loading' ? 'Loading the live module…' : 'The live module could not be loaded.'}</h3><p role="status" id="study-load-status">${state.phase === 'loading' ? 'The module is being requested. You can choose another study or change Reduce motion while it loads.' : 'The 3D module or its engine is unavailable. Scroll sequence and the study tabs remain available. Reload the page to retry the module request.'}</p>${state.phase === 'error' ? '<button class="quiet-button" data-reload-study>Reload this page</button><details><summary>Error details</summary><p data-study-error></p></details>' : ''}</div>`;
+  if (state.phase === 'error') {
+    host.querySelector('[data-study-error]').textContent = state.error instanceof Error ? state.error.message : String(state.error);
+    host.querySelector('[data-reload-study]').addEventListener('click', () => location.reload(), { once: true });
+  }
+}
+const controller = createStudyController({
+  host,
+  getReducedMotion: () => preference.checked,
+  onState: presentState,
+  onSelection({ name, focus }) {
+    currentAudit = null;
+    selected = name;
+    for (const tab of tabs) { const active = tab.dataset.effect === name; tab.setAttribute('aria-selected', String(active)); tab.tabIndex = active ? 0 : -1; }
+    host.setAttribute('aria-labelledby', `tab-${name}`);
+    if (focus) tabs.find(tab => tab.dataset.effect === name).focus({ preventScroll: true });
+  },
+  onAudit(owner, event) {
     if (event.phase === 'ready') currentAudit = { ...owner, read: event.read };
     if (event.phase === 'disposed') {
       disposedAudits.push({ ...owner, snapshot: event.snapshot });
       if (disposedAudits.length > 20) disposedAudits.shift();
       if (currentAudit?.id === owner.id) currentAudit = null;
     }
-  } });
-  if (focus) tabs.find(tab => tab.dataset.effect === name).focus({ preventScroll: true });
-}
+  },
+});
 for (const tab of tabs) {
-  tab.addEventListener('click', () => { if (tab.dataset.effect !== selected) mount(tab.dataset.effect); });
+  tab.addEventListener('click', () => { if (tab.dataset.effect !== selected) controller.select(tab.dataset.effect); });
   tab.addEventListener('keydown', e => {
     const index = tabs.indexOf(tab);
     const next = e.key === 'ArrowRight' ? (index + 1) % 3 : e.key === 'ArrowLeft' ? (index + 2) % 3 : e.key === 'Home' ? 0 : e.key === 'End' ? 2 : -1;
-    if (next >= 0) { e.preventDefault(); mount(tabs[next].dataset.effect, { focus: true }); }
+    if (next >= 0) { e.preventDefault(); controller.select(tabs[next].dataset.effect, { focus: true }); }
   });
 }
-preference.addEventListener('change', () => effect.setReducedMotion(preference.checked));
-media.addEventListener('change', e => { preference.checked = e.matches; effect.setReducedMotion(e.matches); });
-mount(selected);
-window.addEventListener('pagehide', () => effect?.destroy());
+preference.addEventListener('change', () => controller.setReducedMotion(preference.checked));
+media.addEventListener('change', e => { preference.checked = e.matches; controller.setReducedMotion(e.matches); });
+controller.select(selected);
+window.addEventListener('pagehide', () => controller.suspend());
+window.addEventListener('pageshow', event => controller.resume(event));
+}
+
+if (typeof document !== 'undefined') startApp();

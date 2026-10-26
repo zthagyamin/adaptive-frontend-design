@@ -103,7 +103,11 @@ async function refresh({ initial = false } = {}) {
 }
 
 function renderDates() {
-  $('#date-tabs').innerHTML = state.dates.map((date, index) => `<button class="date-tab" data-date="${date}" aria-pressed="${date === state.date}" aria-label="${weekdays[index]} ${dateText(date)}，${state.reservations.filter(row => row.date === date).length} 条预约"><span>${weekdays[index]}</span><strong>${Number(date.slice(8))}</strong><i class="date-dot" aria-hidden="true"></i></button>`).join('');
+  $('#date-tabs').innerHTML = state.dates.map((date, index) => {
+    const descriptionId = `date-description-${date}`;
+    const count = state.reservations.filter(row => row.date === date).length;
+    return `<button class="date-tab" data-date="${date}" aria-pressed="${date === state.date}" aria-describedby="${descriptionId}"><span>${weekdays[index]}</span><strong>${Number(date.slice(8))}</strong><i class="date-dot" aria-hidden="true"></i></button><span id="${descriptionId}" class="sr-only">${date.slice(0, 4)} 年 ${dateText(date)}，${count} 条预约</span>`;
+  }).join('');
   $('#date-tabs').querySelectorAll('[data-date]').forEach(button => button.addEventListener('click', () => {
     state.date = button.dataset.date;
     state.selected = null;
