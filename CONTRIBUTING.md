@@ -17,7 +17,7 @@ Do not submit private project material, personal task histories, credentials, or
 2. Keep detailed guidance conditional; the entry point should remain a useful router.
 3. Preserve source attributions, modification notices, and applicable license texts.
 4. Run `node scripts/validate.mjs` and `node --test tests/*.test.mjs` with Node.js 20+.
-5. For behavior changes, include a representative request and a nearby request that should stay unaffected. Static checks do not demonstrate agent adoption or aesthetic improvement.
+5. For behavior changes, use the relevant [paired behavior checks](docs/BEHAVIOR-CHECKS.md) or add a representative request and a nearby request that should stay unaffected. Keep grading criteria from the evaluated agent and record the actual outcome. Static checks do not demonstrate agent adoption or aesthetic improvement.
 
 Use the user's requested language. Do not turn one site's palette, typography, spacing, controls, or camera into a default for unrelated work.
 

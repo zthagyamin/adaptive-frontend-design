@@ -14,5 +14,5 @@ jobs:
           persist-credentials: false
       - name: Validate package and links
         run: node scripts/validate.mjs
-      - name: Check mathematical helpers
+      - name: Check helpers, example paths, data and package fixtures
         run: node --test tests/*.test.mjs

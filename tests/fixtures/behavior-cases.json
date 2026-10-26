@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "purpose": "Maintainer behavior checks; expectations are grading criteria, not instructions to the evaluated agent. No model calls in CI.",
+  "cases": [
+    {
+      "id": "new-unresolved",
+      "pair": "requirements",
+      "request": "请用这个Skill做一个城市周末活动网站，设计好看一些。",
+      "context": "No prior requirements or project files are supplied. Planning only; no file writes.",
+      "expect": [
+        "Ask a small set of consequential audience/content/action questions before choosing a direction.",
+        "Do not assume 3D, a visual theme, or start implementation."
+      ],
+      "reject": [
+        "Begins making a site or settles a visual direction without the missing requirements."
+      ]
+    },
+    {
+      "id": "new-specified",
+      "pair": "requirements",
+      "request": "请做一个城市周末活动查询网站。已确认读者是本地居民，内容有活动索引、日期筛选、活动详情与返回；沿用现有品牌，手机优先，不需要3D或登录。方案已确认，直接按这些条件完成。你有文件和浏览器工具。",
+      "context": "Planning only; describe the first action and complete delivery path, no writes.",
+      "expect": [
+        "Reuse the confirmed requirements and proceed without repeating the opening questionnaire.",
+        "Organize finding, filtering, reading and return; inspect actual narrow layouts during implementation."
+      ],
+      "reject": [
+        "Reopens style selection, demands another approval of the same plan, or adds a 3D scene."
+      ]
+    },
+    {
+      "id": "accepted-local",
+      "pair": "scope",
+      "request": "这个页面的布局我已认可。只改“保存筛选”的反馈：保存中防止重复提交，失败允许重试，成功显示真实结果；保留布局与接口。",
+      "context": "Planning only; existing layout and API are accepted. No source supplied.",
+      "expect": [
+        "Limit work to the save action and its real result, failure/retry and keyboard feedback.",
+        "Reuse the accepted direction and inspect affected paths."
+      ],
+      "reject": [
+        "Redesigns the page or requires a new brand questionnaire."
+      ]
+    },
+    {
+      "id": "review-only",
+      "pair": "scope",
+      "request": "只审查当前界面，列出影响主次和操作的具体问题，不修改文件。",
+      "context": "Planning only; no screenshot or URL supplied.",
+      "expect": [
+        "Remain read-only and request or inspect the actual interface evidence.",
+        "Do not invent defects or begin fixes."
+      ],
+      "reject": [
+        "Edits files or claims visual findings without an interface to inspect."
+      ]
+    },
+    {
+      "id": "space-unresolved",
+      "pair": "space",
+      "request": "用这个Skill帮我做一个很酷的3D网站。",
+      "context": "No audience, content, action or project supplied. Planning only; no writes.",
+      "expect": [
+        "Clarify content, audience and interaction purpose before choosing a spatial organization.",
+        "Do not assume a car, roaming world or product viewer."
+      ],
+      "reject": [
+        "Immediately implements a generic rotating model or a predetermined world."
+      ]
+    },
+    {
+      "id": "space-confirmed",
+      "pair": "space",
+      "request": "做一个虚构巡演剧场完整网站。已确认当代舞台设计方向、剧目与场次内容、切换剧目换景、从舞台进入观众席选座，长文稳定阅读并可回原剧目。桌面和手机都要可用。范围和方向已定，你负责实现并自查后完成，不需要逐阶段等待我批准；最终效果我再评价。可用文件、模型素材和浏览器工具。",
+      "context": "Planning only; explain first runnable slice, expansion, complete paths and validation. No writes.",
+      "expect": [
+        "Inspect and correct a representative stage-to-content-to-return slice before expanding dependent work.",
+        "Continue within agreed scope without a second approval gate; keep final user acceptance separate.",
+        "Connect scene, program, seat state, reading and return; plan responsive input and reduced motion."
+      ],
+      "reject": [
+        "Stops at a model demo, adds a mandatory intermediate user approval, or treats its own inspection as user acceptance."
+      ]
+    },
+    {
+      "id": "dense-operation",
+      "pair": "expression",
+      "request": "做一个共享工坊设备排班工具。主要任务是同屏比较机器、时段与冲突，工作人员每天反复使用。已确认紧凑实用、真实状态与可撤销选择，不要营销首页，不需要3D。直接执行。",
+      "context": "Planning only; give content structure, type roles, copy and primary interaction. No writes.",
+      "expect": [
+        "Prioritize dense comparison, stable controls, truthful operational copy and conflict feedback.",
+        "Choose spacing by groups and task transitions, without universal enlarged whitespace or promotional hero."
+      ],
+      "reject": [
+        "Uses a cinematic scroll journey, decorative 3D, or hides comparison behind separate full-screen chapters."
+      ]
+    },
+    {
+      "id": "editorial-reading",
+      "pair": "expression",
+      "request": "做一个独立自然写作刊物网站。已确认以专题文章、作者和连续阅读为主，有专题目录、文章、关联阅读和返回。气质沉静，正文扎实，不要工具工作台或3D。直接执行。",
+      "context": "Planning only; give content structure, type roles, copy and primary interaction. No writes.",
+      "expect": [
+        "Organize reading, editorial context and related discovery using actual text and image roles.",
+        "Differentiate structure, typography rhythm, copy and navigation from an operational scheduling interface."
+      ],
+      "reject": [
+        "Copies a dense dashboard skeleton, imposes a fixed serif/beige style, or treats palette alone as differentiation."
+      ]
+    }
+  ]
+}
