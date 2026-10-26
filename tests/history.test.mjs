@@ -7,10 +7,13 @@ import {createReaderHistory} from '../examples/migration-field-guide/history.mjs
 
 // Run the production event handlers; only browser surfaces are stand-ins.
 const source=await readFile(new URL('../examples/migration-field-guide/app.js',import.meta.url),'utf8');
+const markup=await readFile(new URL('../examples/migration-field-guide/index.html',import.meta.url),'utf8');
+const headingIds=new Set([...markup.matchAll(/<h[1-6]\b[^>]*\bid="([^"]+)"/g)].map(match=>match[1]));
 function page({hash='#notes',state=null}={}){
   const elements=new Map(),listeners=new Map(),focused=[];
   function element(key){if(!elements.has(key))elements.set(key,{open:false,disabled:false,isConnected:true,dataset:{},style:{},classList:{add(){},toggle(){}},addEventListener(type,fn){this[type]=fn},setAttribute(){},querySelectorAll(){return[]},querySelector(){return element(key+' h2')},getBoundingClientRect(){return{top:80,bottom:120,left:0,right:400}},matches(){return false},focus(){focused.push(key)},scrollIntoView(){},showModal(){this.open=true},close(){this.open=false}});return elements.get(key)}
-  const document={querySelector:element,querySelectorAll:()=>[],addEventListener(type,fn){listeners.set('document:'+type,fn)},body:{style:{}},documentElement:{classList:{toggle(){}}}};
+  const query=key=>/^#[\w-]+-title$/.test(key)&&key!=='#reader-title'&&!headingIds.has(key.slice(1))?null:element(key);
+  const document={querySelector:query,querySelectorAll:()=>[],addEventListener(type,fn){listeners.set('document:'+type,fn)},body:{style:{}},documentElement:{classList:{toggle(){}}}};
   const entries=[{hash:'#outside',state:null},{hash,state}],location={pathname:'/guide/',search:'',hash};let cursor=1;
   function move(url,nextState,replace){const entry={hash:new URL(url,'https://example.test/guide/').hash,state:structuredClone(nextState)};if(replace)entries[cursor]=entry;else{entries.splice(cursor+1);entries.push(entry);cursor++}location.hash=entry.hash}
   const goCalls=[],history={get state(){return structuredClone(entries[cursor].state)},replaceState(s,_,url){move(url,s,true)},pushState(s,_,url){move(url,s,false)},go(delta){goCalls.push(delta);const next=cursor+delta;if(next<0||next>=entries.length)return;cursor=next;location.hash=entries[cursor].hash;listeners.get('popstate')?.()}};
@@ -24,6 +27,17 @@ test('a direct detail and related details close to the manual, never another det
   const p=page({hash:'#/note/reed-1018?from=notes'});
   p.click('#/species/wader?from=notes');p.click('#/note/sand-1021?from=notes');p.close();
   assert.equal(p.location.hash,'#notes');assert.equal(p.reader.open,false);assert.deepEqual(p.goCalls,[]);
+});
+
+test('direct and refreshed About details return to the real About heading',()=>{
+  for(const hash of ['#/about','#/about?from=about']){
+    const p=page({hash,state:{fieldReaderVisit:'a-previous-document',fieldReaderEntry:1}});
+    p.close();
+    assert.equal(p.location.hash,'#about');
+    assert.equal(p.reader.open,false);
+    assert.equal(p.focused.at(-1),'#about-title');
+    assert.deepEqual(p.goCalls,[]);
+  }
 });
 
 test('in-site entry retains its real origin through related details and back/forward',()=>{
