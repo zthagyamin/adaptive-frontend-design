@@ -20,11 +20,24 @@ async function observe(browser,viewport,{url,ready,eager=false}){
     await page.goto(url);await ready(page);
     await page.evaluate(()=>document.fonts.ready);
     await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-    return await page.evaluate(()=>{
+    const result=await page.evaluate(()=>{
       const navigation=performance.getEntriesByType('navigation')[0];
       const assets=performance.getEntriesByType('resource').map(r=>({path:new URL(r.name).pathname,bytes:r.encodedBodySize}));
       return {viewport:{width:innerWidth,height:innerHeight},readyObservationMs:performance.now(),domContentLoadedMs:navigation.domContentLoadedEventEnd,loadMs:navigation.loadEventEnd,initialBytes:navigation.encodedBodySize+assets.reduce((n,r)=>n+r.bytes,0),assets,layoutShift:window.__startupProbe,fontFamily:getComputedStyle(document.body).fontFamily};
     });
+    // Read actual glyph fonts after the timing sample, rather than mistaking a
+    // computed CSS family list for proof that its first family was installed.
+    const session=await context.newCDPSession(page);
+    try{
+      await session.send('DOM.enable');await session.send('CSS.enable');
+      const {root}=await session.send('DOM.getDocument');result.renderedFonts=[];
+      for(const selector of ['h1','main p']){
+        const {nodeId}=await session.send('DOM.querySelector',{nodeId:root.nodeId,selector});
+        const {fonts}=await session.send('CSS.getPlatformFontsForNode',{nodeId});
+        result.renderedFonts.push({selector,fonts});
+      }
+    }finally{await session.detach();}
+    return result;
   }finally{await context.close();}
 }
 test('three matched startup samples per example and eager/lazy motion comparison',async({browser,schedulerOrigin},testInfo)=>{
@@ -42,6 +55,7 @@ test('three matched startup samples per example and eager/lazy motion comparison
       const sample=await observe(browser,viewport,item);samples.push(sample);
       expect(sample.initialBytes).toBeGreaterThan(0);expect(sample.initialBytes).toBeLessThanOrEqual(item.budget);
       expect.soft(sample.layoutShift.cls,`${item.name}: startup shift sum over this bounded observation`).toBeLessThanOrEqual(0.1);
+      for(const observation of sample.renderedFonts)expect(observation.fonts.some(font=>font.glyphCount>0&&font.familyName.length>0),`${item.name} ${observation.selector}: resolved glyph fonts`).toBe(true);
       if(item.name==='motion')expect(sample.assets.some(r=>r.path==='/vendor/three.module.js')).toBe(false);
     }
     report.examples[item.name]=samples;

@@ -4,7 +4,9 @@ const root='http://127.0.0.1:3002';
 test('cover and directory keep distinct matching return paths',async({page})=>{
   await page.goto(root);await page.locator('.cover-media>a').click();await expect(page.locator('[data-return]').first()).toContainText('封面');
   await page.locator('[data-return]').first().click();await expect(page).toHaveURL(/#\/$/);
-  await page.getByRole('link',{name:'本期目录',exact:true}).click();await page.getByRole('link',{name:'等潮水把岸还回来',exact:true}).click();
+  await page.getByRole('link',{name:'本期目录',exact:true}).click();
+  await expect(page.getByRole('link',{name:'本期目录',exact:true})).toHaveAttribute('aria-current','page');
+  await page.getByRole('link',{name:'等潮水把岸还回来',exact:true}).click();
   await expect(page.locator('[data-return]').first()).toContainText('目录');await page.goBack();await expect(page).toHaveURL(/#\/contents$/);
   await page.goForward();await expect(page.locator('#article-title')).toHaveText('等潮水把岸还回来');
 });

@@ -30,3 +30,9 @@ No commercial course video, brand photography, model, HDR environment, or font b
 The repository's migration field guide is distributed separately from the installable skill. It has its own [asset and dependency statement](https://github.com/zthagyamin/adaptive-frontend-design/tree/main/examples/migration-field-guide) in the repository. The skill itself has no Three.js runtime dependency. The example's vendored Three.js r160 retains its complete MIT license, and its two nature images are identified as generated concepts rather than field evidence.
 
 The repository-level example link is informational. Installation copies only this skill directory; using the skill does not require the example or any private evidence archive.
+
+## Original implementation-derived synthesis in the upgrade candidate
+
+The workshop scheduler, nature journal and motion lab contribute conditional guidance on asynchronous truth, visible focus after native-dialog closure or redraw, input cancellation ownership, accessible visible names, source/display/near-view assets, module execution and browser evidence. These additions were derived from task-authored implementations and observed corrections; they are not claims about the private code of studied commercial websites.
+
+The examples remain outside this installable directory. Fictional records and essays, original concept illustrations, generated concept imagery, asset derivatives and the reused Three.js engine are identified in each example's own asset/README statements. No palette, control geometry, example API or runtime becomes a required Skill template. Bounded behavior and transfer checks do not establish universal effectiveness or user acceptance.

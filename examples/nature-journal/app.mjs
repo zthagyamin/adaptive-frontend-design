@@ -71,7 +71,10 @@ function render({ initial = false, historyMove = false } = {}) {
   }
   document.title = a ? `${a.title} — 岸线` : kind === 'about' ? '关于岸线 — 岸线' : '岸线 — 在细小处停留';
   document.body.dataset.page = a ? 'article' : kind;
-  document.querySelectorAll('.site-header nav a').forEach(link => link.toggleAttribute('aria-current', link.hash === route.path));
+  document.querySelectorAll('.site-header nav a').forEach(link => {
+    if (link.hash === route.path) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
   if (route.image && a) {
     document.querySelector('#image-title').textContent = a.title;
     const full = document.querySelector('#full-image'); full.src = `./assets/${a.fullImage || a.image}`; full.alt = a.alt;
