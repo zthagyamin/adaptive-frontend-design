@@ -44,6 +44,7 @@ jobs:
         with:
           name: chromium-browser-evidence
           path: .test-artifacts/
+          include-hidden-files: true
           retention-days: 7
   webkit:
     if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && !github.event.pull_request.draft)
@@ -65,4 +66,5 @@ jobs:
         with:
           name: webkit-browser-evidence
           path: .test-artifacts/
+          include-hidden-files: true
           retention-days: 7
