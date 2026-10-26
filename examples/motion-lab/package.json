@@ -1,0 +1,7 @@
+{
+  "name": "afd-motion-lab",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": { "start": "node serve.mjs", "test": "node --test test/*.test.mjs" }
+}

@@ -9,5 +9,9 @@ export default defineConfig({
     {name:'chromium-narrow',use:{browserName:'chromium',viewport:{width:390,height:844}}},
     {name:'webkit-smoke',testMatch:'**/*.smoke.spec.mjs',use:{browserName:'webkit',viewport:{width:1280,height:800}}}
   ],
-  webServer:[{command:'node examples/migration-field-guide/serve.mjs',env:{AFD_DEMO_PORT:'3000'},url:'http://127.0.0.1:3000',reuseExistingServer:false,timeout:20000}]
+  webServer:[
+    {command:'node examples/migration-field-guide/serve.mjs',env:{AFD_DEMO_PORT:'3000'},url:'http://127.0.0.1:3000',reuseExistingServer:false,timeout:20000},
+    {command:'node examples/nature-journal/serve.mjs',env:{AFD_DEMO_PORT:'3002'},url:'http://127.0.0.1:3002',reuseExistingServer:false,timeout:20000},
+    {command:'node examples/motion-lab/serve.mjs',env:{AFD_DEMO_PORT:'3003'},url:'http://127.0.0.1:3003',reuseExistingServer:false,timeout:20000}
+  ]
 });

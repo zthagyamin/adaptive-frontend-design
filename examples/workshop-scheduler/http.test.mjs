@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createDemoServer } from './serve.mjs';
+import { createService } from './service.mjs';
+
+test('real HTTP adapter serves relative resources and preserves mutation error semantics', async t => {
+  const server = createDemoServer({ service: createService({ reservations: [], latency: 0 }) });
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const root = `http://127.0.0.1:${server.address().port}`;
+  const post = (url, data, key = 'http-1', extra = {}) => fetch(root + url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key, ...extra }, body: JSON.stringify(data) });
+  for (const file of ['/', '/app.mjs', '/data.mjs', '/styles.css', '/diagnostics.html']) assert.equal((await fetch(root + file)).status, 200);
+  assert.equal((await fetch(root + '/service.mjs')).status, 404);
+  assert.equal((await fetch(root + '/%2e%2e%2fpackage.json')).status, 404);
+  const initial = await (await fetch(root + '/api/reservations')).json();
+  assert.equal(initial.devices.length, 3);
+  assert.equal(initial.dates.length, 7);
+  const data = { title: 'HTTP 木盒', booker: '测试同事', deviceId: 'laser', date: '2026-10-26', start: 600, end: 630, note: '' };
+  assert.equal((await post('/api/__demo/control', { mode: 'fail' })).status, 200);
+  const failed = await post('/api/reservations/create', data);
+  assert.equal(failed.status, 503);
+  assert.equal((await failed.json()).code, 'UNAVAILABLE');
+  const created = await (await post('/api/reservations/create', data)).json();
+  assert.equal(created.reservation.title, data.title);
+  assert.deepEqual(await (await post('/api/reservations/create', data)).json(), created);
+  assert.equal((await (await fetch(root + '/api/reservations')).json()).reservations.length, 1);
+  const conflict = await post('/api/reservations/create', data, 'other');
+  assert.equal(conflict.status, 409);
+  assert.equal((await conflict.json()).code, 'CONFLICT');
+  assert.equal((await post('/api/reservations/create', data, 'cross-origin', { Origin: 'https://example.invalid' })).status, 403);
+});

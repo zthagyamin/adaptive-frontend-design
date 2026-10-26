@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light"><title>同作工坊 · 设备排班</title>
+  <link rel="stylesheet" href="./styles.css"><script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#schedule-heading">跳到设备排班</a>
+  <header class="app-header">
+    <a class="brand" href="./" aria-label="同作工坊排班首页"><span class="brand-mark" aria-hidden="true">同</span><span>同作工坊<small>共享制作空间</small></span></a>
+    <span class="workspace-label">工作台 <span aria-hidden="true">/</span> 设备排班</span>
+    <span class="demo-label">演示工作区 · 虚构资料</span>
+  </header>
+  <main>
+    <section class="page-heading" aria-labelledby="page-title">
+      <div><p class="eyebrow">一起制作，有序共用</p><h1 id="page-title">设备排班</h1><p class="intro">空闲留白，预约在列。选一个时段，开始下一件作品。</p></div>
+      <button id="new-booking" class="primary"><span aria-hidden="true">＋</span> 新建预约</button>
+    </section>
+    <div id="global-error" class="global-error" role="alert" hidden></div>
+    <section class="week-bar" aria-label="日期与设备筛选">
+      <div class="week-heading"><strong>10 月 26 日 — 11 月 1 日</strong><span>2026 · 一周排班</span></div>
+      <div id="date-tabs" class="date-tabs" role="group" aria-label="选择日期"></div>
+      <label class="filter">显示设备<select id="device-filter"><option value="all">全部设备</option></select></label>
+    </section>
+    <div class="work-area">
+      <section class="schedule-section" aria-labelledby="schedule-heading">
+        <div class="schedule-toolbar"><div><h2 id="schedule-heading" tabindex="-1">周一，10 月 26 日</h2><span id="day-summary">正在连接演示服务…</span></div><div class="legend"><span class="legend-free"></span>空闲 <span class="legend-booked"></span>已预约</div></div>
+        <div id="schedule-scroll" class="schedule-scroll" tabindex="0" aria-label="设备时间轴，横向比较设备，纵向查看 09:00 至 18:00"><div id="schedule" class="schedule" aria-busy="true"><p class="loading">正在读取本周排班…</p></div></div>
+        <p class="schedule-foot"><span>开放时间 09:00–18:00</span><span>以 30 分钟为单位 · 点击空闲格预约</span></p>
+      </section>
+      <aside class="detail-panel" aria-labelledby="detail-title"><div class="panel-heading"><h2 id="detail-title">预约详情</h2><span class="mini-label">当日工作</span></div><div id="details"></div></aside>
+    </div>
+    <footer class="page-footer"><span class="connection"><i id="connection-dot"></i><span id="connection-text">正在连接</span></span><span>本地模拟服务 · 数据仅保留至服务重启</span></footer>
+  </main>
+  <div id="notice" class="notice" role="status" aria-live="polite" hidden><span id="notice-text"></span><button id="undo" hidden>撤销取消</button><button id="dismiss-notice" aria-label="关闭通知">×</button></div>
+  <dialog id="booking-dialog" aria-labelledby="form-title">
+    <form id="booking-form">
+      <div class="dialog-heading"><div><p class="eyebrow">同作工坊 · 设备预约</p><h2 id="form-title">新建预约</h2></div><button type="button" class="icon-button" id="close-form" aria-label="关闭预约表单">×</button></div>
+      <p class="form-caption">预约保存后才会占用时段。带 * 的项目为必填。</p>
+      <div id="form-error" class="form-error" role="alert" tabindex="-1" hidden></div>
+      <fieldset id="form-fields">
+        <label>预约名称 *<input name="title" required maxlength="40" placeholder="例如：桦木灯罩打样" autocomplete="off"></label>
+        <div class="form-row"><label>使用人 *<input name="booker" required maxlength="20" placeholder="填写姓名" autocomplete="off"></label><label>设备 *<select name="deviceId" required></select></label></div>
+        <label>日期 *<select name="date" required></select></label>
+        <div class="form-row"><label>开始时间 *<select name="start" required></select></label><label>结束时间 *<select name="end" required></select></label></div>
+        <p class="field-help">开放时间 09:00–18:00，最短预约 30 分钟。</p>
+        <label>备注 <span class="optional">选填</span><textarea name="note" rows="2" maxlength="240" placeholder="材料、加工要求或交接事项"></textarea></label>
+      </fieldset>
+      <div class="dialog-footer"><button type="button" id="leave-form" class="secondary">返回排班</button><button type="submit" id="save-booking" class="primary">保存预约</button></div>
+      <p id="save-state" class="save-state" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+  <dialog id="cancel-dialog" aria-labelledby="cancel-title"><div class="dialog-heading"><h2 id="cancel-title">取消这条预约？</h2><button id="close-cancel" class="icon-button" aria-label="关闭取消确认">×</button></div><p id="cancel-summary"></p><p class="form-caption">取消后时段会重新开放。操作完成后可以撤销；若时段已被占用，撤销将无法恢复。</p><div id="cancel-error" class="form-error" role="alert" hidden></div><div class="dialog-footer"><button id="keep-booking" class="secondary">保留预约</button><button id="confirm-cancel" class="danger">确认取消</button></div><p id="cancel-state" class="save-state" role="status"></p></dialog>
+</body>
+</html>

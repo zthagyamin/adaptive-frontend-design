@@ -14,10 +14,12 @@
     "test:e2e": "playwright test",
     "demo": "node examples/migration-field-guide/serve.mjs",
     "demo:scheduler": "node examples/workshop-scheduler/serve.mjs",
-    "demo:journal": "node examples/nature-journal/serve.mjs"
+    "demo:journal": "node examples/nature-journal/serve.mjs",
+    "demo:motion": "node examples/motion-lab/serve.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
-    "@playwright/test": "1.64.1"
+    "@playwright/test": "1.64.1",
+    "sharp": "0.35.5"
   }
 }
