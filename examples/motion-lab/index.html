@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171c21"><title>Motion Lab — studies in response</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <a class="skip" href="#experiments">Skip to experiments</a>
+  <header class="masthead"><a class="wordmark" href="#top" aria-label="m↗ — Motion Lab home">m<span>↗</span></a><span>MOTION LAB<br><small>Studies in response</small></span><a class="reference-link" href="./README.md">Implementation notes ↗</a></header>
+  <main id="top">
+    <section class="intro" aria-labelledby="title"><p class="eyebrow">A WORKING REFERENCE / THREE INDEPENDENT STUDIES</p><h1 id="title">Make a move.<br><em>Watch what follows.</em></h1><div class="intro-bottom"><p>Scroll becomes a sequence. A surface holds a gesture. A field carries a little momentum. Explore each mechanism on its own terms.</p><span class="index-mark" aria-hidden="true">01—03</span></div></section>
+    <section id="experiments" aria-label="Motion experiments">
+      <div class="lab-bar"><div class="tabs" role="tablist" aria-label="Choose a study"><button id="tab-scroll" role="tab" aria-controls="effect-host" aria-selected="true" data-effect="scroll"><span>01</span> Scroll sequence</button><button id="tab-surface" role="tab" aria-controls="effect-host" aria-selected="false" tabindex="-1" data-effect="surface"><span>02</span> Elastic surface</button><button id="tab-particles" role="tab" aria-controls="effect-host" aria-selected="false" tabindex="-1" data-effect="particles"><span>03</span> Particle field</button></div><label class="motion-pref"><input id="reduce-motion" type="checkbox"> Reduce motion</label></div>
+      <div id="effect-host" role="tabpanel" aria-labelledby="tab-scroll"></div>
+    </section>
+    <footer><p>Built to be interrupted.<br><span>Native input · Local response · A quiet resting state</span></p><a href="#top">Back to top ↑</a></footer>
+  </main>
+  <script type="module" src="./app.mjs"></script>
+</body></html>

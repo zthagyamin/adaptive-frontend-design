@@ -1,18 +1,70 @@
 name: Validate
 on:
   push:
+    branches: [main]
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    strategy:
+      matrix:
+        node: ['20', '22']
     steps:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node }}
       - name: Validate package and links
         run: node scripts/validate.mjs
       - name: Check helpers, example paths, data and package fixtures
-        run: node --test tests/*.test.mjs
+        run: node scripts/unit-tests.mjs
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e -- --project=chromium-desktop --project=chromium-narrow
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chromium-browser-evidence
+          path: .test-artifacts/
+          include-hidden-files: true
+          retention-days: 7
+  webkit:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'pull_request' && !github.event.pull_request.draft)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps webkit
+      - run: npm run test:e2e -- --project=webkit-smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: webkit-browser-evidence
+          path: .test-artifacts/
+          include-hidden-files: true
+          retention-days: 7

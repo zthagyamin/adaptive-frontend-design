@@ -1,0 +1,747 @@
+{
+  "sourceCommit": "69eec755fa0dd8b10d3b81533faf448b57cbddda",
+  "workflowRun": 40389257460,
+  "measurement": {
+    "environment": {
+      "project": "chromium-narrow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "boundary": "Fresh browser contexts on one CI runner; readiness is observed after the named DOM checks, font readiness and two frames. Layout shifts cover startup only. These values do not prove human-perceived latency, GPU speed or cross-device performance.",
+    "examples": {
+      "scheduler": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 120.60000000000582,
+          "domContentLoadedMs": 38.90000000002328,
+          "loadMs": 38.90000000002328,
+          "initialBytes": 45394,
+          "assets": [
+            {
+              "path": "/styles.css",
+              "bytes": 16384
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 20289
+            },
+            {
+              "path": "/data.mjs",
+              "bytes": 2509
+            },
+            {
+              "path": "/api/reservations",
+              "bytes": 646
+            }
+          ],
+          "layoutShift": {
+            "cls": 0.007922507327282603,
+            "shifts": [
+              {
+                "time": 59.20000000001164,
+                "value": 0.007922507327282603,
+                "sources": [
+                  {
+                    "target": "P.schedule-foot",
+                    "previous": {
+                      "x": 14,
+                      "y": 789.921875,
+                      "width": 362,
+                      "height": 33,
+                      "top": 789.921875,
+                      "right": 376,
+                      "bottom": 822.921875,
+                      "left": 14
+                    },
+                    "current": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    }
+                  },
+                  {
+                    "target": "ASIDE.detail-panel",
+                    "previous": {
+                      "x": 14,
+                      "y": 838.921875,
+                      "width": 362,
+                      "height": 5.078125,
+                      "top": 838.921875,
+                      "right": 376,
+                      "bottom": 844,
+                      "left": 14
+                    },
+                    "current": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "fontFamily": "Inter, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 140.69999999998254,
+          "domContentLoadedMs": 40,
+          "loadMs": 40,
+          "initialBytes": 45394,
+          "assets": [
+            {
+              "path": "/styles.css",
+              "bytes": 16384
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 20289
+            },
+            {
+              "path": "/data.mjs",
+              "bytes": 2509
+            },
+            {
+              "path": "/api/reservations",
+              "bytes": 646
+            }
+          ],
+          "layoutShift": {
+            "cls": 0.007922507327282603,
+            "shifts": [
+              {
+                "time": 60,
+                "value": 0.007922507327282603,
+                "sources": [
+                  {
+                    "target": "P.schedule-foot",
+                    "previous": {
+                      "x": 14,
+                      "y": 789.921875,
+                      "width": 362,
+                      "height": 33,
+                      "top": 789.921875,
+                      "right": 376,
+                      "bottom": 822.921875,
+                      "left": 14
+                    },
+                    "current": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    }
+                  },
+                  {
+                    "target": "ASIDE.detail-panel",
+                    "previous": {
+                      "x": 14,
+                      "y": 838.921875,
+                      "width": 362,
+                      "height": 5.078125,
+                      "top": 838.921875,
+                      "right": 376,
+                      "bottom": 844,
+                      "left": 14
+                    },
+                    "current": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "fontFamily": "Inter, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 111.39999999999418,
+          "domContentLoadedMs": 40.19999999998254,
+          "loadMs": 40.29999999998836,
+          "initialBytes": 45394,
+          "assets": [
+            {
+              "path": "/styles.css",
+              "bytes": 16384
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 20289
+            },
+            {
+              "path": "/data.mjs",
+              "bytes": 2509
+            },
+            {
+              "path": "/api/reservations",
+              "bytes": 646
+            }
+          ],
+          "layoutShift": {
+            "cls": 0.007922507327282603,
+            "shifts": [
+              {
+                "time": 61.5,
+                "value": 0.007922507327282603,
+                "sources": [
+                  {
+                    "target": "P.schedule-foot",
+                    "previous": {
+                      "x": 14,
+                      "y": 789.921875,
+                      "width": 362,
+                      "height": 33,
+                      "top": 789.921875,
+                      "right": 376,
+                      "bottom": 822.921875,
+                      "left": 14
+                    },
+                    "current": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    }
+                  },
+                  {
+                    "target": "ASIDE.detail-panel",
+                    "previous": {
+                      "x": 14,
+                      "y": 838.921875,
+                      "width": 362,
+                      "height": 5.078125,
+                      "top": 838.921875,
+                      "right": 376,
+                      "bottom": 844,
+                      "left": 14
+                    },
+                    "current": {
+                      "x": 0,
+                      "y": 0,
+                      "width": 0,
+                      "height": 0,
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "fontFamily": "Inter, \"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+        }
+      ],
+      "journal": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 144.89999999999418,
+          "domContentLoadedMs": 31.89999999999418,
+          "loadMs": 36.39999999999418,
+          "initialBytes": 635165,
+          "assets": [
+            {
+              "path": "/style.css",
+              "bytes": 16909
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 15395
+            },
+            {
+              "path": "/content.mjs",
+              "bytes": 16055
+            },
+            {
+              "path": "/routing.mjs",
+              "bytes": 2155
+            },
+            {
+              "path": "/assets/tidal-reeds.webp",
+              "bytes": 182072
+            },
+            {
+              "path": "/assets/forest-floor.webp",
+              "bytes": 206724
+            },
+            {
+              "path": "/assets/rain-stone.webp",
+              "bytes": 194226
+            }
+          ],
+          "layoutShift": {
+            "cls": 0,
+            "shifts": []
+          },
+          "fontFamily": "\"Microsoft YaHei\", \"PingFang SC\", system-ui, sans-serif"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 130.80000000001746,
+          "domContentLoadedMs": 32.89999999999418,
+          "loadMs": 36.80000000001746,
+          "initialBytes": 635165,
+          "assets": [
+            {
+              "path": "/style.css",
+              "bytes": 16909
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 15395
+            },
+            {
+              "path": "/content.mjs",
+              "bytes": 16055
+            },
+            {
+              "path": "/routing.mjs",
+              "bytes": 2155
+            },
+            {
+              "path": "/assets/tidal-reeds.webp",
+              "bytes": 182072
+            },
+            {
+              "path": "/assets/forest-floor.webp",
+              "bytes": 206724
+            },
+            {
+              "path": "/assets/rain-stone.webp",
+              "bytes": 194226
+            }
+          ],
+          "layoutShift": {
+            "cls": 0,
+            "shifts": []
+          },
+          "fontFamily": "\"Microsoft YaHei\", \"PingFang SC\", system-ui, sans-serif"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 148.40000000002328,
+          "domContentLoadedMs": 31.800000000017462,
+          "loadMs": 38.90000000002328,
+          "initialBytes": 635165,
+          "assets": [
+            {
+              "path": "/style.css",
+              "bytes": 16909
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 15395
+            },
+            {
+              "path": "/content.mjs",
+              "bytes": 16055
+            },
+            {
+              "path": "/routing.mjs",
+              "bytes": 2155
+            },
+            {
+              "path": "/assets/tidal-reeds.webp",
+              "bytes": 182072
+            },
+            {
+              "path": "/assets/forest-floor.webp",
+              "bytes": 206724
+            },
+            {
+              "path": "/assets/rain-stone.webp",
+              "bytes": 194226
+            }
+          ],
+          "layoutShift": {
+            "cls": 0,
+            "shifts": []
+          },
+          "fontFamily": "\"Microsoft YaHei\", \"PingFang SC\", system-ui, sans-serif"
+        }
+      ],
+      "motion": [
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 103.60000000000582,
+          "domContentLoadedMs": 34.10000000000582,
+          "loadMs": 46.10000000000582,
+          "initialBytes": 37057,
+          "assets": [
+            {
+              "path": "/style.css",
+              "bytes": 11790
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 10774
+            },
+            {
+              "path": "/effects/scroll.mjs",
+              "bytes": 6099
+            },
+            {
+              "path": "/effects/math.mjs",
+              "bytes": 2766
+            },
+            {
+              "path": "/assets/contour.svg",
+              "bytes": 1188
+            },
+            {
+              "path": "/assets/section.svg",
+              "bytes": 1069
+            },
+            {
+              "path": "/assets/field.svg",
+              "bytes": 1263
+            }
+          ],
+          "layoutShift": {
+            "cls": 0,
+            "shifts": []
+          },
+          "fontFamily": "Arial, \"Helvetica Neue\", sans-serif"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 111.70000000001164,
+          "domContentLoadedMs": 35.60000000000582,
+          "loadMs": 44.30000000001746,
+          "initialBytes": 37057,
+          "assets": [
+            {
+              "path": "/style.css",
+              "bytes": 11790
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 10774
+            },
+            {
+              "path": "/effects/scroll.mjs",
+              "bytes": 6099
+            },
+            {
+              "path": "/effects/math.mjs",
+              "bytes": 2766
+            },
+            {
+              "path": "/assets/contour.svg",
+              "bytes": 1188
+            },
+            {
+              "path": "/assets/section.svg",
+              "bytes": 1069
+            },
+            {
+              "path": "/assets/field.svg",
+              "bytes": 1263
+            }
+          ],
+          "layoutShift": {
+            "cls": 0,
+            "shifts": []
+          },
+          "fontFamily": "Arial, \"Helvetica Neue\", sans-serif"
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "readyObservationMs": 113.5,
+          "domContentLoadedMs": 36.5,
+          "loadMs": 46.30000000001746,
+          "initialBytes": 37057,
+          "assets": [
+            {
+              "path": "/style.css",
+              "bytes": 11790
+            },
+            {
+              "path": "/app.mjs",
+              "bytes": 10774
+            },
+            {
+              "path": "/effects/scroll.mjs",
+              "bytes": 6099
+            },
+            {
+              "path": "/effects/math.mjs",
+              "bytes": 2766
+            },
+            {
+              "path": "/assets/contour.svg",
+              "bytes": 1188
+            },
+            {
+              "path": "/assets/section.svg",
+              "bytes": 1069
+            },
+            {
+              "path": "/assets/field.svg",
+              "bytes": 1263
+            }
+          ],
+          "layoutShift": {
+            "cls": 0,
+            "shifts": []
+          },
+          "fontFamily": "Arial, \"Helvetica Neue\", sans-serif"
+        }
+      ]
+    },
+    "eagerMotion": [
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyObservationMs": 187.10000000000582,
+        "domContentLoadedMs": 75.70000000001164,
+        "loadMs": 110.5,
+        "initialBytes": 1337485,
+        "assets": [
+          {
+            "path": "/style.css",
+            "bytes": 11790
+          },
+          {
+            "path": "/app.mjs",
+            "bytes": 6904
+          },
+          {
+            "path": "/effects/scroll.mjs",
+            "bytes": 6099
+          },
+          {
+            "path": "/effects/surface.mjs",
+            "bytes": 10045
+          },
+          {
+            "path": "/effects/particles.mjs",
+            "bytes": 11267
+          },
+          {
+            "path": "/effects/math.mjs",
+            "bytes": 2766
+          },
+          {
+            "path": "/effects/runtime.mjs",
+            "bytes": 8923
+          },
+          {
+            "path": "/effects/lifecycle.mjs",
+            "bytes": 1091
+          },
+          {
+            "path": "/vendor/three.module.js",
+            "bytes": 1272972
+          },
+          {
+            "path": "/assets/contour.svg",
+            "bytes": 1188
+          },
+          {
+            "path": "/assets/section.svg",
+            "bytes": 1069
+          },
+          {
+            "path": "/assets/field.svg",
+            "bytes": 1263
+          }
+        ],
+        "layoutShift": {
+          "cls": 0,
+          "shifts": []
+        },
+        "fontFamily": "Arial, \"Helvetica Neue\", sans-serif"
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyObservationMs": 194.89999999999418,
+        "domContentLoadedMs": 74.09999999997672,
+        "loadMs": 110.19999999998254,
+        "initialBytes": 1337485,
+        "assets": [
+          {
+            "path": "/style.css",
+            "bytes": 11790
+          },
+          {
+            "path": "/app.mjs",
+            "bytes": 6904
+          },
+          {
+            "path": "/effects/scroll.mjs",
+            "bytes": 6099
+          },
+          {
+            "path": "/effects/surface.mjs",
+            "bytes": 10045
+          },
+          {
+            "path": "/effects/particles.mjs",
+            "bytes": 11267
+          },
+          {
+            "path": "/effects/math.mjs",
+            "bytes": 2766
+          },
+          {
+            "path": "/effects/runtime.mjs",
+            "bytes": 8923
+          },
+          {
+            "path": "/vendor/three.module.js",
+            "bytes": 1272972
+          },
+          {
+            "path": "/effects/lifecycle.mjs",
+            "bytes": 1091
+          },
+          {
+            "path": "/assets/contour.svg",
+            "bytes": 1188
+          },
+          {
+            "path": "/assets/section.svg",
+            "bytes": 1069
+          },
+          {
+            "path": "/assets/field.svg",
+            "bytes": 1263
+          }
+        ],
+        "layoutShift": {
+          "cls": 0,
+          "shifts": []
+        },
+        "fontFamily": "Arial, \"Helvetica Neue\", sans-serif"
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "readyObservationMs": 187.59999999997672,
+        "domContentLoadedMs": 75.39999999999418,
+        "loadMs": 110.5,
+        "initialBytes": 1337485,
+        "assets": [
+          {
+            "path": "/style.css",
+            "bytes": 11790
+          },
+          {
+            "path": "/app.mjs",
+            "bytes": 6904
+          },
+          {
+            "path": "/effects/scroll.mjs",
+            "bytes": 6099
+          },
+          {
+            "path": "/effects/surface.mjs",
+            "bytes": 10045
+          },
+          {
+            "path": "/effects/particles.mjs",
+            "bytes": 11267
+          },
+          {
+            "path": "/effects/math.mjs",
+            "bytes": 2766
+          },
+          {
+            "path": "/effects/runtime.mjs",
+            "bytes": 8923
+          },
+          {
+            "path": "/vendor/three.module.js",
+            "bytes": 1272972
+          },
+          {
+            "path": "/effects/lifecycle.mjs",
+            "bytes": 1091
+          },
+          {
+            "path": "/assets/contour.svg",
+            "bytes": 1188
+          },
+          {
+            "path": "/assets/section.svg",
+            "bytes": 1069
+          },
+          {
+            "path": "/assets/field.svg",
+            "bytes": 1263
+          }
+        ],
+        "layoutShift": {
+          "cls": 0,
+          "shifts": []
+        },
+        "fontFamily": "Arial, \"Helvetica Neue\", sans-serif"
+      }
+    ]
+  }
+}

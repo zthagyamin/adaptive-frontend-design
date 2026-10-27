@@ -15,7 +15,7 @@ export async function validatePackage({root=defaultRoot,io=fs}={}) {
   async function files(dir){
     const result=[];
     for(const entry of await io.readdir(dir,{withFileTypes:true})){
-      if(['.git','node_modules','dist','coverage'].includes(entry.name))continue;
+      if(['.git','node_modules','dist','coverage','.test-artifacts','playwright-report','test-results'].includes(entry.name))continue;
       const full=path.join(dir,entry.name);
       if(entry.isSymbolicLink()){failures.push(relative(full)+': unexpected symlink');continue;}
       if(entry.isDirectory())result.push(...await files(full));else result.push(full);

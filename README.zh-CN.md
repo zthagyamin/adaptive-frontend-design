@@ -83,13 +83,26 @@ node examples/migration-field-guide/serve.mjs
 
 截图来自仓库内的真实示例。影像为生成概念图，数据为虚构；它们不代表实地监测，也不保证每次调用得到同样设计。公开版保留工作方法，去除了私人研究库、任务流水和机器依赖。[验证范围](docs/VALIDATION.md)。
 
+## 两种差异作品与动态参考
+
+0.2.0 增加三项独立可运行参考，分别服务于比较操作、连续阅读与直接动态响应。布局、控件外形和参数属于各自示例，不成为 Skill 用户的默认模板。发布检查与本人效果反馈的实际范围见[验证记录](docs/VALIDATION.md)。
+
+| 示例 | 在仓库根目录启动 | 主要路径 |
+|---|---|---|
+| [同作工坊排班](examples/workshop-scheduler/README.md) | `npm run demo:scheduler` | 三设备比较、预约、失败与冲突恢复、修改、取消和撤销 |
+| [岸线自然写作刊物](examples/nature-journal/README.md) | `npm run demo:journal` | 三篇原创虚构长文、概念影像近看、关联阅读与返回 |
+| [动态实验](examples/motion-lab/README.md) | `npm run demo:motion` | 原生滚动编排、局部表面形变、输入后衰减的粒子场 |
+
+示例使用 Node.js 20+ 和内置模块，无需安装运行依赖。动态实验通过明确的本地映射沿用已保留许可的 Three.js r160。安装 Skill 仍只复制 `skills/adaptive-frontend-design`。
+
+仓库维护使用 Node.js 22.12+，执行 `npm ci`、`npm run check`，安装相应 Playwright 浏览器后执行 `npm run test:e2e`。PR 运行 Chromium，主分支及已就绪 PR 补充 WebKit 关键路径。报告、失败截图及 trace 作为 CI 产物保存，不进入安装用 Skill。见[本轮范围与验收](docs/UPGRADE-v020.md)及[验证边界](docs/VALIDATION.md)。
+
 ## 参与改进
 
 欢迎可复现的交互问题、符合当前任务的参考、忠实翻译和来源清楚的完整示例。检查命令：
 
 ```sh
-node scripts/validate.mjs
-node --test tests/*.test.mjs
+npm run check
 ```
 
 贡献前看 [CONTRIBUTING.md](CONTRIBUTING.md)。如果有帮助，可以点一个Star；带具体材料的使用反馈更有助于改进。

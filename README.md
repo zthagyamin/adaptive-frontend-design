@@ -99,6 +99,20 @@ Open the address printed by the server. Node.js 20+ is sufficient for this local
 
 These are real screenshots of the included project, not a promise that a skill call produces the same design. Its images are generated concepts and its records are fictional. The public edition preserves the working methods while removing private research and task history. [Validation scope](docs/VALIDATION.md).
 
+## Contrasting examples and motion studies
+
+Version 0.2.0 adds three separate runnable references for comparison, reading and direct motion. Their layout, control shapes and parameters belong to each example; they are not a default template for Skill users. Release checks and the exact human-feedback scope are recorded in [validation](docs/VALIDATION.md).
+
+| Example | Run from the repository root | Main path |
+| --- | --- | --- |
+| [Workshop scheduler](examples/workshop-scheduler/README.md) | `npm run demo:scheduler` | Compare three machines, reserve, recover from failure/conflict, edit, cancel and undo |
+| [Nature journal](examples/nature-journal/README.md) | `npm run demo:journal` | Read three fictional essays, inspect concept images, follow related reading and return |
+| [Motion lab](examples/motion-lab/README.md) | `npm run demo:motion` | Native scroll, a deformable surface and a decaying particle field |
+
+Each runs with Node.js 20+ and built-in modules; no dependency installation is needed for the demos. The lab serves the already vendored Three.js r160 from its explicit local mapping. Installing the Skill still copies only `skills/adaptive-frontend-design`.
+
+Maintainers use Node.js 22.12+, `npm ci`, `npm run check`, and `npm run test:e2e` after installing the relevant Playwright browser. Chromium regression runs on PRs; WebKit smoke runs on main and ready PRs. Reports and failed traces/screenshots are CI artifacts, outside the installed Skill. See [upgrade scope and acceptance](docs/UPGRADE-v020.md) and [validation limits](docs/VALIDATION.md).
+
 ## How the skill is organized
 
 The agent reads the entry point, then only the references needed for the task:
@@ -120,8 +134,7 @@ It keeps **implementation checks**, **visual assessment**, and **human acceptanc
 Useful contributions include reproducible interaction bugs, better task-specific references, faithful translations, and complete examples with clear asset rights. Run:
 
 ```sh
-node scripts/validate.mjs
-node --test tests/*.test.mjs
+npm run check
 ```
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md). If the workflow helps, a star makes the project easier to find; a concrete example or issue helps improve it.

@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "d41a8cd174094bf73fd53eab7c3ec5ba228c403d",
+  "workflowRun": 40399063888,
+  "project": "webkit-smoke",
+  "configuredViewport": {
+    "width": 1280,
+    "height": 800
+  },
+  "observations": [
+    {
+      "study": "surface",
+      "outcome": "canvas with direct controls"
+    },
+    {
+      "study": "particles",
+      "outcome": "canvas with direct controls"
+    }
+  ]
+}
