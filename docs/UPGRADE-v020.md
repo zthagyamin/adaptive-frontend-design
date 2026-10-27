@@ -1,6 +1,6 @@
 # v0.2.0 implementation and acceptance
 
-The upgrade starts from public v0.1.0 and keeps installed/private editions separate. The overall direction and feel of the two complete pages and motion studies were accepted on 2026-10-27 (Asia/Taipei). Package/plugin 0.2.0 is prepared; true 200% browser zoom and final publication checks remain pending. See [the evidence and limits](VALIDATION.md).
+The upgrade starts from public v0.1.0 and keeps installed/private editions separate. The overall direction and feel of the two complete pages and motion studies were accepted on 2026-10-27 (Asia/Taipei); the maintainer also reported that true 200% browser zoom had no obstruction, overflow or abnormal operations and authorized final submission and merge. Package/plugin metadata agrees at 0.2.0. See [the evidence and limits](VALIDATION.md); [PR #2](https://github.com/zthagyamin/adaptive-frontend-design/pull/2) and the workflow history record final integration.
 
 ## Deliverables
 
@@ -16,4 +16,4 @@ Check actual desktop 1280×800 and narrow 390×844 layouts, plus 1024/320 bounda
 
 Source checks, browser behavior, continuous observation, author assessment and human acceptance are separate records. No website palette, shape, layout or fixed parameter becomes a universal rule. No real account, payment, production reservation service or nature observation is implied.
 
-Package/plugin metadata now agrees at 0.2.0. Final publication still waits for the separate true-zoom check, successful final browser checks, merge and main verification. Preparing metadata or marking a PR ready for review does not constitute publication or a passed user check.
+The manual acceptance gates are recorded separately from automated checks. The final source must pass PR checks, be merged and pass main verification before this upgrade is reported complete. Preparing metadata or marking a PR ready for review alone does not constitute publication. Current local installations are not replaced by updating the public repository.

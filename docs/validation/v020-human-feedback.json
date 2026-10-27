@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-27",
+  "timeZone": "Asia/Taipei",
+  "evidenceKind": "maintainer-reported manual acceptance",
+  "examples": [
+    "workshop-scheduler",
+    "nature-journal",
+    "motion-lab"
+  ],
+  "overallDirectionAccepted": true,
+  "controlExpressionAccepted": true,
+  "interactionFeelAccepted": true,
+  "browserZoom": {
+    "percent": 200,
+    "reportedObstruction": false,
+    "reportedOverflow": false,
+    "reportedAbnormalOperations": false,
+    "browserNameAndVersion": "not supplied",
+    "independentlyRepeatedByAgent": false
+  },
+  "finalSubmissionAndMergeAuthorized": true,
+  "boundary": "This records the maintainer's explicit feedback on this iteration. It is not an automated result, complete accessibility certification or evidence of universal design effectiveness."
+}

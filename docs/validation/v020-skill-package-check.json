@@ -1,0 +1,240 @@
+{
+  "version": "0.2.0",
+  "checkedPublicCommit": "41328cf089ffdfb0bcdce202e4dcb5194ce788e9",
+  "sourceTree": "ee3ef6716d9fdbdafe88adf80e97829ba7ccdeca",
+  "skillTree": "8bbe42eca23cd9eb8520823562e9a3076f3220d3",
+  "canonicalText": "LF archive produced with a per-command core.autocrlf=false; no persistent configuration change",
+  "files": 43,
+  "relativeLinks": 284,
+  "icons": 2,
+  "upstreamLicenseFiles": 8,
+  "helperExports": {
+    "retarget": [
+      "brakeForTarget",
+      "criticalStep"
+    ],
+    "projection": [
+      "fovForPlaneHeight",
+      "planeForDomRect",
+      "viewportForDomRect"
+    ]
+  },
+  "boundary": "Copied/unpacked package structure, exact committed bytes, relative links/icons/licenses and dependency-free helper execution. No installed Skill, private edition or host-discovery configuration was changed; this is not a new-host adoption test.",
+  "inventory": [
+    {
+      "path": "LICENSE",
+      "bytes": 10150,
+      "sha256": "d242518747bb12d22a8b2803e0c500dac4aecb1f9a77c0e84a286e6921dae748"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 7829,
+      "sha256": "d280afa5051d29ae80e9f5c50f99171c9c47cbef2845e30baceb34504347b842"
+    },
+    {
+      "path": "SOURCES.md",
+      "bytes": 6249,
+      "sha256": "b59ad9cd74022525b00b6853d93a92ca104f7cc03f8366d30d510e498d2cfd7d"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "bytes": 382,
+      "sha256": "13bc336e9d818249dcb23f2b5e8ba1f2eeef49588c45fc6b000ec9862819774c"
+    },
+    {
+      "path": "assets/icon.svg",
+      "bytes": 302,
+      "sha256": "309cecbfc30154f4d33c19b479294d1a87fbfd6cc50a1e04b9a0526cc25f584c"
+    },
+    {
+      "path": "assets/motion/projection.mjs",
+      "bytes": 2235,
+      "sha256": "fc482e3137294600f83b397c9fec21a6adaab1438305d8b028b407412659808a"
+    },
+    {
+      "path": "assets/motion/retarget.mjs",
+      "bytes": 1415,
+      "sha256": "e5be5f659d5b697095d5b15f4850125cf927d55ba162e136915b9251589c887b"
+    },
+    {
+      "path": "licenses/Anthropic-frontend-design-Apache-2.0.txt",
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    {
+      "path": "licenses/CloudAI-X-MIT.txt",
+      "bytes": 1067,
+      "sha256": "ce7068dea5d9867e63de0d99178a6c5615837fc9c07a88d70991d0bccf3d363a"
+    },
+    {
+      "path": "licenses/Impeccable-Apache-2.0.txt",
+      "bytes": 10767,
+      "sha256": "72bdc6c2866074f26236c6313f44acb6e26dd58e605aa7aa8158f4ab7ef9b069"
+    },
+    {
+      "path": "licenses/Impeccable-NOTICE.md",
+      "bytes": 504,
+      "sha256": "1b347de5ccbdc461dce1fd4d0a8d4e517c30d0dbd3b693cec5db2e651dbd668c"
+    },
+    {
+      "path": "licenses/Vercel-MIT.txt",
+      "bytes": 1079,
+      "sha256": "592702a2a974fdaf3f43acb336275c4b8ab0a7cfcbeb248f897848f96954c5ed"
+    },
+    {
+      "path": "licenses/gamedev-Apache-2.0.txt",
+      "bytes": 11396,
+      "sha256": "cfa7880110b25e430c58fa705947d0a4e38df792a08a82601ce444add4fef2e0"
+    },
+    {
+      "path": "licenses/gamedev-NOTICE.txt",
+      "bytes": 884,
+      "sha256": "2f2e585df2962e80bb2a1dbe86bde18e71467dfa9699b000319320752d22fc29"
+    },
+    {
+      "path": "licenses/mblode-MIT.txt",
+      "bytes": 1070,
+      "sha256": "81ac64b19ea7ae7f9a8d197705df58f48ffca02c74fca13e565dedf4f7595b46"
+    },
+    {
+      "path": "references/action-control-selection.md",
+      "bytes": 14417,
+      "sha256": "d1b474510e057b1bab46b8438fea5ffc4a87c76ab57f99e527e7ba4973f3118a"
+    },
+    {
+      "path": "references/brand-editorial.md",
+      "bytes": 2679,
+      "sha256": "5a9c6a83d2f3d03c4f4d48dcc809f4fc24edb2ec67cc2bc38525c94704e9b552"
+    },
+    {
+      "path": "references/browser-verification.md",
+      "bytes": 5406,
+      "sha256": "99b362fb46ccfc420b37692aca13ec329d73e90ee4fbf04bba89cd4a4d00a837"
+    },
+    {
+      "path": "references/colour-relationships.md",
+      "bytes": 3888,
+      "sha256": "dfbe695820cd452bc351395333d0abbf7829149fe94a826374b573996d2c4e1e"
+    },
+    {
+      "path": "references/composition-craft.md",
+      "bytes": 6982,
+      "sha256": "7ef525fdcea6c0e9d1ed501e40aed798247f6861fba0097da3161e780ffee648"
+    },
+    {
+      "path": "references/conditional-design-rules.md",
+      "bytes": 55864,
+      "sha256": "7a2dc2c02d385b3e79e35f85b943440a899b9fb8f14472c3594ff320b51c2f5f"
+    },
+    {
+      "path": "references/design-contract.md",
+      "bytes": 7684,
+      "sha256": "9d935e74b7017016246ef20719aa30439dcb38ef11a542063f62c1f406133682"
+    },
+    {
+      "path": "references/design-dialogue.md",
+      "bytes": 6734,
+      "sha256": "6376b8a8434ffd5583369284cacef414b665eed4d880519fd89f8357915a1fee"
+    },
+    {
+      "path": "references/design-foundations.md",
+      "bytes": 13210,
+      "sha256": "362cbbffcd121a5c2a11139d0f6a217ed40cac29a28ff331beff6a16291d512e"
+    },
+    {
+      "path": "references/design-terminology.md",
+      "bytes": 6008,
+      "sha256": "3718c52836487725b5676a6e5626b130e85dbd4b5fefc937fdf82ea0194b6a89"
+    },
+    {
+      "path": "references/functional-reading.md",
+      "bytes": 1639,
+      "sha256": "5a0b9e5c2c5b3dee6b063f368d2774c7eb9095591f4d34824bf178de81205b48"
+    },
+    {
+      "path": "references/global-visual-direction.md",
+      "bytes": 11665,
+      "sha256": "fd0197ff05b1ce2a86c58e40abf5d5d89820a1d9ba43df2a4255b0f0b99b2f8f"
+    },
+    {
+      "path": "references/immersive-world-motion.md",
+      "bytes": 13648,
+      "sha256": "13ab815181c2c18aa04ca4abab0292c812642904d7ddefd90d44f68bf5a28cd7"
+    },
+    {
+      "path": "references/interaction-craft.md",
+      "bytes": 10597,
+      "sha256": "4752695d1a6874369d8a2c58101a402267019598b99315ef5c750700d9bebcec"
+    },
+    {
+      "path": "references/interactive-world-production.md",
+      "bytes": 14521,
+      "sha256": "0613f382994f5089aed53218b953a8cb3591611c351687536f61da7ba27ef75d"
+    },
+    {
+      "path": "references/media-and-assets.md",
+      "bytes": 12620,
+      "sha256": "a987e90b9fabba7ed374bddfa9cfa2748368288b40166ff139e5771275a5793b"
+    },
+    {
+      "path": "references/motion-language.md",
+      "bytes": 7203,
+      "sha256": "e10bd330aea353760dd7c509392bcb3c24b72538522209c0b5b27bad0823be9e"
+    },
+    {
+      "path": "references/motion-systems.md",
+      "bytes": 6725,
+      "sha256": "2631002174116992f4d9768a4c08b664880c02fadbd608cf9ec9c8fc187ba733"
+    },
+    {
+      "path": "references/projection-and-dom.md",
+      "bytes": 5574,
+      "sha256": "c2887f6a6cd131aec70d5101f77453150f661cd20109222e1715a67cefd98f43"
+    },
+    {
+      "path": "references/realtime-space.md",
+      "bytes": 10912,
+      "sha256": "400e909aacf03d8c0f5e16a404bf1be2d32071845e42ea381a709d0d4ee26207"
+    },
+    {
+      "path": "references/representative-example.md",
+      "bytes": 3045,
+      "sha256": "708d1497d0de7a24aa60801044ebe2c2db61f14d459daca7cd08f0417734cfb5"
+    },
+    {
+      "path": "references/route-realtime-space.md",
+      "bytes": 1924,
+      "sha256": "71e309d7a5e5069b4ae23a1ffec46ba931f04299e68e9c63377a554ef5bd1728"
+    },
+    {
+      "path": "references/route-video-motion.md",
+      "bytes": 2543,
+      "sha256": "40a9a1d4553595a42d9eea00accce73de70f29bcc3f77db9ac342ec5fc5bfb07"
+    },
+    {
+      "path": "references/scene-content-continuity.md",
+      "bytes": 15593,
+      "sha256": "6f27b78bdbe166b20f5e00ba242e20e9d37985cce6bbd769ee4e35ae31e116ad"
+    },
+    {
+      "path": "references/source-study.md",
+      "bytes": 6501,
+      "sha256": "afb29d0a97c2e0e5097259d9689339fdf940bf8dcb98afae46245770db33dfcc"
+    },
+    {
+      "path": "references/style-archetypes.md",
+      "bytes": 13876,
+      "sha256": "49c455ed1ff574c03918b43a9096ba6510c3b84d6d9367ea36b84bd37c6374c6"
+    },
+    {
+      "path": "references/threejs-workflow.md",
+      "bytes": 19036,
+      "sha256": "2bbe23b72cf28763c3df5a47862d65f02d985e7adcb14599ff2729be5399fe5e"
+    },
+    {
+      "path": "references/video-motion.md",
+      "bytes": 10297,
+      "sha256": "52ec8f41bfcec2b18d1107d87a2dd80074df0d68b4559f7efe5b9e4d785358f9"
+    }
+  ]
+}
